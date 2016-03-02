@@ -153,6 +153,12 @@ public class LinkedList {
      * @return la liste dans l'ordre inverse
      */
     public LinkedList reverse() {
-        return null;
+        LinkedList inverse = new LinkedList(this.element, null);
+        LinkedList suivant = this.suivant;
+        while(suivant != null) {
+            inverse = new LinkedList(suivant.getElement(), inverse);
+            suivant = suivant.suivant;
+        }
+        return inverse;
     }
 }
