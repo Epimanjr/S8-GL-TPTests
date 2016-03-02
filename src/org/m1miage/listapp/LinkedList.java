@@ -53,7 +53,7 @@ public class LinkedList {
         this.suivant = suivant;
     }
 
- /*=====================================================*/
+    /*=====================================================*/
  /* METHODES DONT VOUS DEVEZ ECRIRE ET FOURNIR LE CODE  */
  /*=====================================================*/
     /**
@@ -130,21 +130,8 @@ public class LinkedList {
      * et les mêmes éléments
      */
     public boolean equals(Object o) {
-        // Si non LinkedList
-        if (!(o instanceof LinkedList)) {
-            return false;
-        }
-        // Conversion en LinkedList
-        LinkedList listtest = (LinkedList) o;
-        // Test de l'élément
-        if (!this.getElement().equals(listtest.getElement())) {
-            return false;
-        }
-        // Test des suivants
-        if (this.suivant != null && listtest.suivant != null) {
-            return this.suivant.equals(listtest.suivant);
-        }
-        return this.suivant == null && listtest.suivant == null;
+        LinkedList listtest = (o instanceof LinkedList) ? (LinkedList) o : null;
+        return (listtest != null) ? this.toString().equals(listtest.toString()) : false;
     }
 
     /**
@@ -155,7 +142,7 @@ public class LinkedList {
     public LinkedList reverse() {
         LinkedList inverse = new LinkedList(this.element, null);
         LinkedList suivant = this.suivant;
-        while(suivant != null) {
+        while (suivant != null) {
             inverse = new LinkedList(suivant.getElement(), inverse);
             suivant = suivant.suivant;
         }
