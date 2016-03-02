@@ -93,11 +93,7 @@ public class LinkedList {
      * @return le dernier élément de la liste
      */
     public Object last() {
-        if (this.suivant == null) {
-            return this.getElement();
-        } else {
-            return this.suivant.last();
-        }
+        return (this.suivant == null) ? this.getElement() : this.suivant.last();
     }
 
     /**
