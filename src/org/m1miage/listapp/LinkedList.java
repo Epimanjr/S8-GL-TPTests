@@ -84,11 +84,7 @@ public class LinkedList {
      * @return repréentation textuelle de la liste
      */
     public String toString() {
-        if (this.suivant == null) {
-            return this.getElement().toString();
-        } else {
-            return this.getElement().toString() + " " + this.getNext().toString();
-        }
+        return (this.suivant == null) ? this.getElement().toString() : this.getElement().toString() + " " + this.getNext().toString();
     }
 
     /**
