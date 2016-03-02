@@ -73,7 +73,7 @@ public class LinkedList {
      */
     public void deleteNext() {
         // Si quelque chose à supprimer
-        if(this.suivant != null) {
+        if (this.suivant != null) {
             this.suivant = this.suivant.getNext();
         }
     }
@@ -84,9 +84,9 @@ public class LinkedList {
      * @return repréentation textuelle de la liste
      */
     public String toString() {
-        if(this.suivant == null) {
+        if (this.suivant == null) {
             return this.getElement().toString();
-        } else  {
+        } else {
             return this.getElement().toString() + " " + this.getNext().toString();
         }
     }
@@ -97,7 +97,7 @@ public class LinkedList {
      * @return le dernier élément de la liste
      */
     public Object last() {
-        if(this.suivant == null) {
+        if (this.suivant == null) {
             return this.getElement();
         } else {
             return this.suivant.last();
@@ -111,7 +111,14 @@ public class LinkedList {
      * @return la nouvelle liste
      */
     public LinkedList append(LinkedList list) {
-        return null;
+        if (list != null) {
+            LinkedList courant = this;
+            while (courant.suivant != null) {
+                courant = courant.suivant;
+            }
+            courant.insert(list);
+        }
+        return this;
     }
 
     /**
@@ -123,7 +130,21 @@ public class LinkedList {
      * et les mêmes éléments
      */
     public boolean equals(Object o) {
-        return false;
+        // Si non LinkedList
+        if (!(o instanceof LinkedList)) {
+            return false;
+        }
+        // Conversion en LinkedList
+        LinkedList listtest = (LinkedList) o;
+        // Test de l'élément
+        if (!this.getElement().equals(listtest.getElement())) {
+            return false;
+        }
+        // Test des suivants
+        if (this.suivant != null && listtest.suivant != null) {
+            return this.suivant.equals(listtest.suivant);
+        }
+        return this.suivant == null && listtest.suivant == null;
     }
 
     /**
