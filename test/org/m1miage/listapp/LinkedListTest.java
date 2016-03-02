@@ -67,7 +67,8 @@ public class LinkedListTest {
      */
     @Test
     public void testLast() {
-        assertEquals(true, false);
+        assertEquals(3, new LinkedList(1, new LinkedList(2, new LinkedList(3, null))).last());
+        assertEquals(1, new LinkedList(1, null).last());
     }
 
     /**
