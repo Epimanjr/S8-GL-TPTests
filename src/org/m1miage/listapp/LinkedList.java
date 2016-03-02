@@ -62,10 +62,8 @@ public class LinkedList {
      * @param o L'objet à insérer dans l'élement
      */
     public void insert(Object o) {
-        // Création d'un nouvel élément
-        LinkedList nouveau = new LinkedList(o, this.suivant);
-        // Liaison de l'élément courant
-        this.suivant = nouveau;
+        // Création et affectation du nouvel élément
+        this.suivant = new LinkedList(o, this.suivant);
     }
 
     /**
@@ -73,9 +71,7 @@ public class LinkedList {
      */
     public void deleteNext() {
         // Si quelque chose à supprimer
-        if (this.suivant != null) {
-            this.suivant = this.suivant.getNext();
-        }
+        this.suivant = (this.suivant != null) ? this.suivant.getNext() : this.suivant;
     }
 
     /**
