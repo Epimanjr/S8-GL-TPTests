@@ -99,6 +99,7 @@ public class LinkedListTest {
      */
     @Test
     public void testReverse() {
-        assertFalse(false);
+        assertEquals("3 2 1", new LinkedList(1, new LinkedList(2, new LinkedList(3, null))).reverse().toString());
+        assertEquals("1", new LinkedList(1, null));
     }
 }
