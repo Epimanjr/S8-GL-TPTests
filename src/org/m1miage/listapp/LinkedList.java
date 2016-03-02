@@ -62,14 +62,20 @@ public class LinkedList {
      * @param o L'objet à insérer dans l'élement
      */
     public void insert(Object o) {
-
+        // Création d'un nouvel élément
+        LinkedList nouveau = new LinkedList(o, this.suivant);
+        // Liaison de l'élément courant
+        this.suivant = nouveau;
     }
 
     /**
      * Supprime l'élément immédiatement après l'élément courant
      */
     public void deleteNext() {
-
+        // Si quelque chose à supprimer
+        if(this.suivant != null) {
+            this.suivant = this.suivant.getNext();
+        }
     }
 
     /**
@@ -78,7 +84,11 @@ public class LinkedList {
      * @return repréentation textuelle de la liste
      */
     public String toString() {
-        return null;
+        if(this.suivant == null) {
+            return this.getElement().toString();
+        } else  {
+            return this.getElement().toString() + " " + this.getNext().toString();
+        }
     }
 
     /**
@@ -87,7 +97,11 @@ public class LinkedList {
      * @return le dernier élément de la liste
      */
     public Object last() {
-        return null;
+        if(this.suivant == null) {
+            return this.getElement();
+        } else {
+            return this.suivant.last();
+        }
     }
 
     /**
